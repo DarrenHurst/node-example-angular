@@ -2,10 +2,22 @@
 /**
  * Module dependencies.
  */
+var mongoose = require('mongoose');
+
 
 var express = require('express'),
   routes = require('./routes'),
   socket = require('./routes/socket.js');
+
+
+// connect to Mongo when the app initializes
+mongoose.connect('mongodb://venumenuDB:venumenu@ds029107.mongolab.com:29107/heroku_app13296650');
+  
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  // yay!
+});
 
 var app = module.exports = express();
 var server = require('http').createServer(app);
@@ -49,3 +61,8 @@ io.sockets.on('connection', socket);
 server.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
+
+var service_stack = require('./stack/stack');
+service_stack.init(app);
+
+

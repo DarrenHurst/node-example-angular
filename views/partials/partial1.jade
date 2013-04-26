@@ -1,2 +1,11 @@
-p This is the partial for view 1.
-p The current time is {{time}}
+p Product Data is located on MongoLab, Connected by Mongoose and emitted to Angular with Socket.IO
+
+div#products(ng-init="product={{product}}")
+  
+  p There are {{product.length}} products!
+  ul
+    li(ng-repeat="item in product")
+       {{item.productName}}
+P If any object is updated in Mongo, it would be refreshed within 1 sec.
+
+{{time}}
