@@ -8,7 +8,7 @@
 -Socket.io
 -Mongoose
 
-![Alt text](/example.pn "Example of Socket level Dom Injection")
+![Alt text](/example.png "Example of Socket level Dom Injection")
 
 
 ## Contact
